@@ -1,5 +1,8 @@
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
+
 from .models import Brand
+from brands import forms
 
 
 class BrandListView(ListView):
@@ -16,3 +19,9 @@ class BrandListView(ListView):
             queryset = queryset.filter(name__icontains=name)
 
         return queryset
+    
+class BrandCreateView(CreateView):
+    model = Brand
+    template_name = "brand_create.html"
+    form_class = forms.BrandForm
+    success_url = reverse_lazy('brand_list')
