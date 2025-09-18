@@ -38,14 +38,14 @@ SGE - Marcas
       {% for brand in brands %}
       <tr>
         <td>
-          <a href="#" class="text-primary fw-semibold">
+          <a href="{% url 'brand_detail' brand.id %}" class="text-primary fw-semibold text-decoration-none">
             {{ brand.id }}
           </a>
         </td>
         <td>{{ brand.name }}</td>
         <td>{{ brand.description }}</td>
         <td>
-          <a href="#" class="btn btn-info btn-sm">
+          <a href="{% url 'brand_detail' brand.id %}" class="btn btn-info btn-sm">
             <i class="bi bi-eye"></i>
           </a>
 
