@@ -4,12 +4,11 @@ from django.views.generic import ListView, CreateView, DetailView
 from . import models, forms
 
 
-class OutflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+class OutflowListView(ListView):
     model = models.Outflow
     template_name = 'outflow_list.html'
     context_object_name = 'outflows'
     paginate_by = 10
-    permission_required = 'outflows.view_outflow'
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -21,15 +20,13 @@ class OutflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         return queryset
 
 
-class OutflowCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+class OutflowCreateView(CreateView):
     model = models.Outflow
     template_name = 'outflow_create.html'
     form_class = forms.OutflowForm
     success_url = reverse_lazy('outflow_list')
-    permission_required = 'outflows.add_outflow'
 
 
-class OutflowDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
+class OutflowDetailView(DetailView):
     model = models.Outflow
     template_name = 'outflow_detail.html'
-    permission_required = 'outflows.view_outflow'
