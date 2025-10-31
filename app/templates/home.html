@@ -23,7 +23,7 @@
       <script>
         document.addEventListener("DOMContentLoaded", function() {
           var dailySalesData = JSON.parse('{{ daily_sales_data|safe }}');
-        //   var dailySalesQuantityData = JSON.parse('{{ daily_sales_quantity_data|safe }}');
+          var dailySalesQuantityData = JSON.parse('{{ daily_sales_quantity_data|safe }}');
     
           var ctxDailySales = document.getElementById('dailySalesChart').getContext('2d');
           var dailySalesChart = new Chart(ctxDailySales, {
