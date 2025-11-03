@@ -17,11 +17,13 @@ SGE - Marcas
       </div>
     </form>
   </div>
+  {% if perms.brands.add_brand %}
   <div class="col-md-6">
     <a href="{% url 'brand_create' %}" class="btn btn-success float-end">
       <i class="bi bi-plus"></i> Nova Marca
     </a>
   </div>
+  {% endif %}
 </div>
 
 <div class="table-responsive">
@@ -38,7 +40,7 @@ SGE - Marcas
       {% for brand in brands %}
       <tr>
         <td>
-          <a href="{% url 'brand_detail' brand.id %}" class="text-primary fw-semibold text-decoration-none">
+          <a href="{% url 'brand_detail' brand.id %}" class="text-primary fw-semibold">
             {{ brand.id }}
           </a>
         </td>
@@ -49,13 +51,17 @@ SGE - Marcas
             <i class="bi bi-eye"></i>
           </a>
 
+          {% if perms.brands.change_brand %}
           <a href="{% url 'brand_update' brand.id %}" class="btn btn-warning btn-sm">
             <i class="bi bi-pencil"></i>
           </a>
+          {% endif %}
 
+          {% if perms.brands.delete_brand %}
           <a href="{% url 'brand_delete' brand.id %}" class="btn btn-danger btn-sm btn-delete">
             <i class="bi bi-trash"></i>
           </a>
+          {% endif %}
         </td>
       </tr>
       {% endfor %}
