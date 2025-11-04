@@ -1,13 +1,13 @@
+from rest_framework import generics
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
-from .models import Category
-from categories import forms
+from . import models, forms, serializers
 
 
 class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
-    model = Category
+    model = models.Category
     template_name = "category_list.html"
     context_object_name = "categories"
     paginate_by = 10
@@ -25,7 +25,7 @@ class CategoryListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
     
 class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
-    model = Category
+    model = models.Category
     template_name = "category_create.html"
     form_class = forms.CategoryForm
     success_url = reverse_lazy('category_list')
@@ -33,13 +33,13 @@ class CategoryCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView
 
 
 class CategoryDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
-    model = Category
+    model = models.Category
     template_name = "category_detail.html"
     permission_required = 'categories.view_category'
 
 
 class CategoryUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
-    model = Category
+    model = models.Category
     template_name = "category_update.html"
     form_class = forms.CategoryForm
     success_url = reverse_lazy('category_list')
@@ -47,7 +47,17 @@ class CategoryUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView
 
 
 class CategoryDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
-    model = Category
+    model = models.Category
     template_name = "category_delete.html"
     success_url = reverse_lazy('category_list')
     permission_required = 'categories.delete_category'
+
+
+class CategoryCreateListAPIView(generics.ListCreateAPIView):
+    queryset = models.Category.objects.all()
+    serializer_class = serializers.CategorySerializer
+
+
+class CategoryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Category.objects.all()
+    serializer_class = serializers.CategorySerializer
