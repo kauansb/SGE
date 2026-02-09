@@ -1,20 +1,74 @@
 {% extends 'base.html' %}
 
+{% block title %}
+  SGE - Deletar Produto
+{% endblock %}
+
 {% block content %}
-  <div class="container mt-4">
-    <h3 class="display-4">Deletar Produto</h3>
 
-    <div class="card">
-      <div class="card-body">
-        <p class="card-text">Tem certeza de que deseja excluir o produto <strong>{{ object.title }}</strong>?</p>
+  {# Page Header #}
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold text-white">Deletar Produto</h1>
+    <p class="text-gray-400 mt-1">Confirme a exclusão do produto do sistema</p>
+  </div>
 
-        <form method="post">
+  {# Warning Card #}
+  <div class="bg-gray-900 rounded-xl border-2 border-red-900/50 p-6 max-w-2xl">
+    {# Warning Icon #}
+    <div class="flex items-start gap-4">
+      <div class="flex-shrink-0">
+        <div class="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center border border-red-800/50">
+          <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="flex-1">
+        <h3 class="text-lg font-semibold text-white mb-2">Atenção: Esta ação não pode ser desfeita</h3>
+        <p class="text-gray-300 mb-4">
+          Tem certeza de que deseja excluir o produto <strong class="text-white">{{ object.title }}</strong>?
+        </p>
+
+        {# Product Details Summary #}
+        <div class="bg-gray-800/50 rounded-lg p-4 mb-6 border border-gray-700">
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <span class="text-gray-400">ID:</span>
+              <span class="text-white font-semibold ml-2">#{{ object.id }}</span>
+            </div>
+            <div>
+              <span class="text-gray-400">Categoria:</span>
+              <span class="text-white font-semibold ml-2">{{ object.category }}</span>
+            </div>
+            <div>
+              <span class="text-gray-400">Marca:</span>
+              <span class="text-white font-semibold ml-2">{{ object.brand }}</span>
+            </div>
+            <div>
+              <span class="text-gray-400">Quantidade:</span>
+              <span class="text-white font-semibold ml-2">{{ object.quantity }}</span>
+            </div>
+          </div>
+        </div>
+
+        <form method="post" class="flex items-center gap-4">
           {% csrf_token %}
-          <button type="submit" class="btn btn-danger">Deletar</button>
+          <button type="submit" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white py-2.5 px-5 rounded-lg font-semibold transition-all duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+            </svg>
+            Sim, Deletar Produto
+          </button>
+          <a href="{% url 'product_list' %}" class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-gray-200 py-2.5 px-5 rounded-lg font-semibold transition-all duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            Cancelar
+          </a>
         </form>
-        
-        <a href="{% url 'product_list' %}" class="btn btn-secondary mt-3">Cancelar e Voltar para a Lista de Produtos</a>
       </div>
     </div>
   </div>
+
 {% endblock %}

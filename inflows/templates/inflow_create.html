@@ -1,18 +1,71 @@
 {% extends 'base.html' %}
 
-{% block content %}
-  <div class="container mt-4">
-    <h3 class="display-4">Cadastrar Entrada</h3>
+{% block title %}
+  SGE - Cadastrar Entrada
+{% endblock %}
 
-    <div class="card">
-      <div class="card-body">
-        <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit" class="btn btn-primary">Registrar Entrada</button>
-        </form>
-      </div>
-    </div>
-    <a href="{% url 'inflow_list' %}" class="btn btn-secondary mt-3">Cancelar e Voltar para a Lista de Entradas</a>
+{% block content %}
+
+  {# Page Header #}
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold text-white">Cadastrar Entrada</h1>
+    <p class="text-gray-400 mt-1">Registre uma nova entrada de produtos no estoque</p>
   </div>
+
+  {# Form Card #}
+  <div class="bg-gray-900 rounded-xl border border-gray-800 p-6 max-w-3xl">
+    <form method="post" class="form-container">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <div class="flex items-center gap-4 mt-6 pt-6 border-t border-gray-800">
+        <button type="submit" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white py-2.5 px-5 rounded-lg font-semibold hover:from-indigo-700 hover:to-violet-700 transition-all duration-200">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          Registrar Entrada
+        </button>
+        <a href="{% url 'inflow_list' %}" class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-gray-200 py-2.5 px-5 rounded-lg font-semibold transition-all duration-200">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<style>
+    .form-container p { margin-bottom: 1rem; }
+    .form-container label { display: block; font-size: 0.875rem; font-weight: 500; color: #d1d5db; margin-bottom: 0.5rem; }
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container input[type="email"],
+    .form-container input[type="url"],
+    .form-container input[type="password"],
+    .form-container input[type="date"],
+    .form-container textarea,
+    .form-container select {
+        width: 100%; padding: 0.75rem 1rem; background-color: #1f2937; border: 1px solid #374151;
+        border-radius: 0.5rem; color: white; font-size: 0.875rem;
+        transition: all 0.2s;
+    }
+    .form-container input:hover,
+    .form-container textarea:hover,
+    .form-container select:hover {
+        border-color: #4b5563;
+    }
+    .form-container input:focus,
+    .form-container textarea:focus,
+    .form-container select:focus {
+        outline: none; border-color: transparent;
+        box-shadow: 0 0 0 2px #6366f1;
+    }
+    .form-container .helptext { font-size: 0.75rem; color: #9ca3af; margin-top: 0.25rem; display: block; }
+    .form-container .errorlist { color: #f87171; font-size: 0.75rem; list-style: none; padding: 0; margin-top: 0.25rem; }
+    .form-container textarea { min-height: 100px; resize: vertical; }
+</style>
 {% endblock %}

@@ -1,38 +1,78 @@
-<div class="card mt-4">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="card bg-primary">
-          <div class="card-body">
-            <h5 class="card-title">Quantidade de vendas</h5>
-            <p class="card-text text-white font-weight-bold display-6">{{ sales_metrics.total_sales }}</p>
-          </div>
+{# Sales Metrics Component - TailwindCSS #}
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+
+  {# Card 1: Quantidade de vendas - Blue #}
+  <div class="bg-gray-900 rounded-xl border border-gray-800 border-l-4 border-l-blue-500 p-6 hover:shadow-lg transition-all duration-200">
+    <div class="flex items-center gap-4">
+      <div class="flex-shrink-0">
+        <div class="w-12 h-12 bg-blue-500 bg-opacity-10 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="card bg-danger">
-          <div class="card-body">
-            <h5 class="card-title">Produtos vendidos</h5>
-            <p class="card-text text-white font-weight-bold display-6">{{ sales_metrics.total_products_sold }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card bg-success">
-          <div class="card-body">
-            <h5 class="card-title">Valor das vendas</h5>
-            <p class="card-text text-white font-weight-bold display-6">R$ {{ sales_metrics.total_sales_value }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card bg-warning">
-          <div class="card-body">
-            <h5 class="card-title">Lucro das vendas</h5>
-            <p class="card-text text-white font-weight-bold display-6">R$ {{ sales_metrics.total_sales_profit }}</p>
-          </div>
-        </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm text-gray-400 mb-1">Quantidade de vendas</p>
+        <p class="text-2xl font-bold text-white">{{ sales_metrics.total_sales }}</p>
       </div>
     </div>
   </div>
+
+  {# Card 2: Produtos vendidos - Red #}
+  <div class="bg-gray-900 rounded-xl border border-gray-800 border-l-4 border-l-red-500 p-6 hover:shadow-lg transition-all duration-200">
+    <div class="flex items-center gap-4">
+      <div class="flex-shrink-0">
+        <div class="w-12 h-12 bg-red-500 bg-opacity-10 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm text-gray-400 mb-1">Produtos vendidos</p>
+        <p class="text-2xl font-bold text-white">{{ sales_metrics.total_products_sold }}</p>
+      </div>
+    </div>
+  </div>
+
+  {# Card 3: Valor das vendas - Green #}
+  <div class="bg-gray-900 rounded-xl border border-gray-800 border-l-4 border-l-green-500 p-6 hover:shadow-lg transition-all duration-200">
+    <div class="flex items-center gap-4">
+      <div class="flex-shrink-0">
+        <div class="w-12 h-12 bg-green-500 bg-opacity-10 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm text-gray-400 mb-1">Valor das vendas</p>
+        <p class="text-2xl font-bold text-white">R$ {{ sales_metrics.total_sales_value }}</p>
+      </div>
+    </div>
+  </div>
+
+  {# Card 4: Lucro das vendas - Amber #}
+  <div class="bg-gray-900 rounded-xl border border-gray-800 border-l-4 border-l-amber-500 p-6 hover:shadow-lg transition-all duration-200">
+    <div class="flex items-center gap-4">
+      <div class="flex-shrink-0">
+        <div class="w-12 h-12 bg-amber-500 bg-opacity-10 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+      </div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm text-gray-400 mb-1">Lucro das vendas</p>
+        <p class="text-2xl font-bold text-white">R$ {{ sales_metrics.total_sales_profit }}</p>
+      </div>
+    </div>
+  </div>
+
 </div>
