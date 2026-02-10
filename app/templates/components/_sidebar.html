@@ -1,10 +1,10 @@
 {# Sidebar Navigation #}
 
 {# Overlay for mobile (hidden by default) #}
-<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden hidden"></div>
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden hidden" aria-hidden="true"></div>
 
 {# Sidebar #}
-<aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-30 w-64 bg-gray-900 border-r border-gray-800 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col">
+<aside id="sidebar" role="navigation" aria-label="Menu principal" class="fixed lg:static inset-y-0 left-0 z-30 w-64 bg-gray-900 border-r border-gray-800 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col">
     {# Sidebar Header #}
     <div class="h-16 flex items-center justify-between px-6 border-b border-gray-800">
         <div class="flex items-center gap-3">
@@ -35,7 +35,7 @@
         <ul class="space-y-1">
             {# Dashboard #}
             <li>
-                <a href="{% url 'home' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
+                <a href="{% url 'home' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-transparent text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                     </svg>
@@ -46,7 +46,7 @@
             {# Fornecedores #}
             {% if perms.suppliers.view_supplier %}
             <li>
-                <a href="{% url 'supplier_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
+                <a href="{% url 'supplier_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-transparent text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
@@ -59,7 +59,7 @@
             {# Marcas #}
             {% if perms.brands.view_brand %}
             <li>
-                <a href="{% url 'brand_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
+                <a href="{% url 'brand_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-transparent text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                     </svg>
@@ -71,7 +71,7 @@
             {# Categorias #}
             {% if perms.categories.view_category %}
             <li>
-                <a href="{% url 'category_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
+                <a href="{% url 'category_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-transparent text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
                     </svg>
@@ -83,7 +83,7 @@
             {# Produtos #}
             {% if perms.products.view_product %}
             <li>
-                <a href="{% url 'product_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
+                <a href="{% url 'product_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-transparent text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-indigo-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                     </svg>
@@ -100,7 +100,7 @@
             {# Entradas #}
             {% if perms.inflows.view_inflow %}
             <li>
-                <a href="{% url 'inflow_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
+                <a href="{% url 'inflow_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-transparent text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-green-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"/>
                     </svg>
@@ -112,7 +112,7 @@
             {# Saídas #}
             {% if perms.outflows.view_outflow %}
             <li>
-                <a href="{% url 'outflow_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
+                <a href="{% url 'outflow_list' %}" class="nav-item group flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-transparent text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-200">
                     <svg class="w-5 h-5 text-gray-400 group-hover:text-red-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"/>
                     </svg>
@@ -141,22 +141,35 @@
 
 {# Sidebar Toggle Script #}
 <script>
-    (function() {
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const sidebarCloseButton = document.getElementById('sidebar-close-button');
+    document.addEventListener('DOMContentLoaded', function() {
+        var sidebar = document.getElementById('sidebar');
+        var overlay = document.getElementById('sidebar-overlay');
+        var mobileMenuButton = document.getElementById('mobile-menu-button');
+        var sidebarCloseButton = document.getElementById('sidebar-close-button');
+        var isOpen = false;
 
         function openSidebar() {
+            if (isOpen) return;
+            isOpen = true;
             sidebar.classList.remove('-translate-x-full');
             overlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            overlay.setAttribute('aria-hidden', 'false');
+            if (mobileMenuButton) {
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+            }
+            sidebarCloseButton.focus();
         }
 
         function closeSidebar() {
+            if (!isOpen) return;
+            isOpen = false;
             sidebar.classList.add('-translate-x-full');
             overlay.classList.add('hidden');
-            document.body.style.overflow = '';
+            overlay.setAttribute('aria-hidden', 'true');
+            if (mobileMenuButton) {
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenuButton.focus();
+            }
         }
 
         if (mobileMenuButton) {
@@ -171,22 +184,37 @@
             overlay.addEventListener('click', closeSidebar);
         }
 
-        // Close sidebar on window resize to desktop size
-        window.addEventListener('resize', function() {
-            if (window.innerWidth >= 1024) {
+        // Close sidebar with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isOpen) {
                 closeSidebar();
             }
         });
 
-        // Highlight active navigation item
-        const currentPath = window.location.pathname;
-        const navItems = document.querySelectorAll('.nav-item');
-
-        navItems.forEach(item => {
-            if (item.getAttribute('href') === currentPath) {
-                item.classList.add('bg-gray-800', 'text-white', 'border-l-4', 'border-indigo-500');
-                item.classList.remove('text-gray-300');
+        // Close sidebar on window resize to desktop size
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024 && isOpen) {
+                closeSidebar();
             }
         });
-    })();
+
+        // Close sidebar when clicking a nav link (mobile)
+        var navLinks = sidebar.querySelectorAll('.nav-item');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 1024) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        // Highlight active navigation item
+        var currentPath = window.location.pathname;
+        navLinks.forEach(function(item) {
+            if (item.getAttribute('href') === currentPath) {
+                item.classList.add('bg-gray-800', 'text-white', 'border-indigo-500');
+                item.classList.remove('text-gray-300', 'border-transparent');
+            }
+        });
+    });
 </script>
